@@ -22,14 +22,13 @@ public class UserDAO implements Serializable {
     private double latitude;
     private double longitude;
     private float direction;
-    private byte[] avatar;
     private String authToken;
     private String password;
 
     public UserDAO() {
     }
 
-    public UserDAO(Long id, String givenName, String surname, String phone, String email, String facebookId, String googleId, boolean driver, String car, float currentRating, double latitude, double longitude,  float direction, byte[] avatar) {
+    public UserDAO(Long id, String givenName, String surname, String phone, String email, String facebookId, String googleId, boolean driver, String car, float currentRating, double latitude, double longitude,  float direction) {
         this.id = id;
         this.givenName = givenName;
         this.surname = surname;
@@ -43,7 +42,6 @@ public class UserDAO implements Serializable {
         this.direction = direction;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.avatar = avatar;
     }
     
     /**
@@ -214,20 +212,6 @@ public class UserDAO implements Serializable {
         this.longitude = longitude;
     }
 
-    /**
-     * @return the avatar
-     */
-    public byte[] getAvatar() {
-        return avatar;
-    }
-
-    /**
-     * @param avatar the avatar to set
-     */
-    public void setAvatar(byte[] avatar) {
-        this.avatar = avatar;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -283,9 +267,6 @@ public class UserDAO implements Serializable {
             return false;
         }
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Arrays.equals(this.avatar, other.avatar)) {
             return false;
         }
         return true;

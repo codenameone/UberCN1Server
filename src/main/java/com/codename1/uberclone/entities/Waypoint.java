@@ -18,4 +18,5 @@ public class Waypoint {
     private long time;
     private double latitude;
     private double longitude;
+    private float direction;
 }

@@ -19,11 +19,6 @@ public class Handler extends BinaryWebSocketHandler {
     
     @Autowired
     private LocationService loc;
-    
-    @Override
-    public boolean supportsPartialMessages() {
-        return false;
-    }
 
     @Override
     protected void handleBinaryMessage(WebSocketSession session, BinaryMessage message) throws Exception {
@@ -68,10 +63,7 @@ public class Handler extends BinaryWebSocketHandler {
                         dos.flush();
                         BinaryMessage bin = new BinaryMessage(bos.toByteArray());
                         session.sendMessage(bin);
-                    } catch(IOException err) {
-                        // since this is a local stream this is unlikely
-                        throw new RuntimeException(err);
-                    }
+                    } 
                 }
                 break;
         }

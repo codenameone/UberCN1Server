@@ -53,7 +53,6 @@ public class User {
 
     public User(UserDAO ud) {
         this(ud.getGivenName(), ud.getSurname(), ud.getPhone(), ud.getEmail(), null, ud.getFacebookId(), ud.getGoogleId(), ud.isDriver(), ud.getCar());
-        this.avatar = ud.getAvatar();
         this.latitude = ud.getLatitude();
         this.longitude = ud.getLongitude();
         this.direction = ud.getDirection();
@@ -61,11 +60,11 @@ public class User {
     }
     
     public UserDAO getDao() {
-        return new UserDAO(id, givenName, surname, phone, email, facebookId, googleId, driver, car, currentRating, latitude, longitude, direction, avatar);
+        return new UserDAO(id, givenName, surname, phone, email, facebookId, googleId, driver, car, currentRating, latitude, longitude, direction);
     }
 
     public UserDAO getPartialDao() {
-        return new UserDAO(id, givenName, surname, null, null, null, null, driver, car, currentRating, latitude, longitude, direction, null);
+        return new UserDAO(id, givenName, surname, null, null, null, null, driver, car, currentRating, latitude, longitude, direction);
     }
     
     public User(String givenName, String surname, String phone, String email, String password, String facebookId, String googleId, boolean driver, String car) {

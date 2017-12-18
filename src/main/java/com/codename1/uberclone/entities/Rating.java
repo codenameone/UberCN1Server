@@ -17,6 +17,7 @@ public class Rating {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+    private long date;
     private float score;
     private String comment;
     

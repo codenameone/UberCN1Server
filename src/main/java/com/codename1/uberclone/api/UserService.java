@@ -28,6 +28,17 @@ public class UserService {
         return u.getAuthToken();
     }
 
+    public byte[] getAvatar(Long id) {
+        User u = users.findOne(id);
+        return u.getAvatar();
+    }
+    
+    public void setAvatar(String token, byte[] a) {
+        User u = users.findByAuthToken(token).get(0);
+        u.setAvatar(a);
+        users.save(u);
+    }
+    
     public void updateUser(UserDAO user) {
         User u = users.findByAuthToken(user.getAuthToken()).get(0);
         u.setCar(user.getCar());
@@ -41,12 +52,7 @@ public class UserService {
         u.setPhone(user.getPhone());
         users.save(u);
     }
-        
-    public void deleteUser(long id) {
-        users.delete(id);
-    }
-    
-    
+            
     public UserDAO loginByPhone(String phone, String password) throws UserAuthenticationException {
         return loginImpl(users.findByPhone(phone), password);
     }
