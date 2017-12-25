@@ -32,7 +32,7 @@ public class LocationService {
         double minLon = lon - radius * 0.0089831;
         double maxLat = lat + radius * 0.009044;
         double maxLon = lon + radius * 0.0089831;
-        return toDaoList(users.findByDriver(true, minLat, maxLat, minLon, maxLon));
+        return toDaoList(users.findByDriver(minLat, maxLat, minLon, maxLon));
     }
 
     public List<UserDAO> findAvailableDrivers(double lat, double lon, double radius) {
@@ -40,7 +40,7 @@ public class LocationService {
         double minLon = lon - radius * 0.0089831;
         double maxLat = lat + radius * 0.009044;
         double maxLon = lon + radius * 0.0089831;
-        return toDaoList(users.findByAvailableDriver(true, minLat, maxLat, minLon, maxLon));
+        return toDaoList(users.findByAvailableDriver(minLat, maxLat, minLon, maxLon));
     }
     
     private List<UserDAO> toDaoList(List<User> us) {

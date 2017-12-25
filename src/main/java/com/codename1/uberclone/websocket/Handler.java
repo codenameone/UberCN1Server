@@ -43,10 +43,10 @@ public class Handler extends BinaryWebSocketHandler {
                 List<UserDAO> response;
                 short responseType;
                 if(seeking) {
-                    response = loc.findAllDrivers(lat, lon, radius);
+                    response = loc.findAvailableDrivers(lat, lon, radius);
                     responseType = MESSAGE_TYPE_DRIVER_POSITIONS;
                 } else {
-                    response = loc.findAvailableDrivers(lat, lon, radius);
+                    response = loc.findAllDrivers(lat, lon, radius);
                     responseType = MESSAGE_TYPE_AVAILBLE_DRIVER_POSITIONS;
                 }
                 if(response != null && response.size() > 0) {

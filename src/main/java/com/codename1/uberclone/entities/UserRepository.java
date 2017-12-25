@@ -16,8 +16,8 @@ public interface UserRepository  extends CrudRepository<User, Long> {
     public List<User> findByFacebookId(String facebookId);
 
     @Query("select b from User b where b.driver = true and b.latitude between ?1 and ?2 and b.longitude between ?3 and ?4")
-    public List<User> findByDriver(boolean driver, double minLat, double maxLat, double minLon, double maxLon);
+    public List<User> findByDriver(double minLat, double maxLat, double minLon, double maxLon);
     
-    @Query("select b from User b where b.driver = true and b.assignedUser is not null and b.latitude between ?1 and ?2 and b.longitude between ?3 and ?4")
-    public List<User> findByAvailableDriver(boolean driver, double minLat, double maxLat, double minLon, double maxLon);
+    @Query("select b from User b where b.driver = true and b.assignedUser is null and b.latitude between ?1 and ?2 and b.longitude between ?3 and ?4")
+    public List<User> findByAvailableDriver(double minLat, double maxLat, double minLon, double maxLon);
 }
