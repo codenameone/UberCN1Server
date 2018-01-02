@@ -24,11 +24,12 @@ public class UserDAO implements Serializable {
     private float direction;
     private String authToken;
     private String password;
+    private String pushToken;
 
     public UserDAO() {
     }
 
-    public UserDAO(Long id, String givenName, String surname, String phone, String email, String facebookId, String googleId, boolean driver, String car, float currentRating, double latitude, double longitude,  float direction) {
+    public UserDAO(Long id, String givenName, String surname, String phone, String email, String facebookId, String googleId, boolean driver, String car, float currentRating, double latitude, double longitude,  float direction, String pushToken) {
         this.id = id;
         this.givenName = givenName;
         this.surname = surname;
@@ -42,6 +43,7 @@ public class UserDAO implements Serializable {
         this.direction = direction;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.pushToken = pushToken;
     }
     
     /**
@@ -312,5 +314,19 @@ public class UserDAO implements Serializable {
      */
     public void setDirection(float direction) {
         this.direction = direction;
+    }
+
+    /**
+     * @return the pushToken
+     */
+    public String getPushToken() {
+        return pushToken;
+    }
+
+    /**
+     * @param pushToken the pushToken to set
+     */
+    public void setPushToken(String pushToken) {
+        this.pushToken = pushToken;
     }
 }

@@ -1,5 +1,6 @@
 package com.codename1.uberclone.entities;
 
+import com.codename1.uberclone.dao.RideDAO;
 import com.codename1.uberclone.dao.UserDAO;
 import java.util.UUID;
 import javax.persistence.Column;
@@ -33,6 +34,10 @@ public class User {
     private String car;
     
     private boolean hailing;
+    private String hailingFrom;
+    private String hailingTo;
+    private String pushToken;
+
     private Long assignedUser;
     
     private float currentRating;
@@ -59,12 +64,16 @@ public class User {
         currentRating = ud.getCurrentRating();
     }
     
+    public RideDAO getRideDao() {
+        return new RideDAO(id, givenName, hailingFrom, hailingTo);
+    }
+    
     public UserDAO getDao() {
-        return new UserDAO(id, givenName, surname, phone, email, facebookId, googleId, driver, car, currentRating, latitude, longitude, direction);
+        return new UserDAO(id, givenName, surname, phone, email, facebookId, googleId, driver, car, currentRating, latitude, longitude, direction, pushToken);
     }
 
     public UserDAO getPartialDao() {
-        return new UserDAO(id, givenName, surname, null, null, null, null, driver, car, currentRating, latitude, longitude, direction);
+        return new UserDAO(id, givenName, surname, null, null, null, null, driver, car, currentRating, latitude, longitude, direction, pushToken);
     }
     
     public User(String givenName, String surname, String phone, String email, String password, String facebookId, String googleId, boolean driver, String car) {
@@ -324,6 +333,48 @@ public class User {
      */
     public void setDirection(float direction) {
         this.direction = direction;
+    }
+
+    /**
+     * @return the hailingFrom
+     */
+    public String getHailingFrom() {
+        return hailingFrom;
+    }
+
+    /**
+     * @param hailingFrom the hailingFrom to set
+     */
+    public void setHailingFrom(String hailingFrom) {
+        this.hailingFrom = hailingFrom;
+    }
+
+    /**
+     * @return the hailingTo
+     */
+    public String getHailingTo() {
+        return hailingTo;
+    }
+
+    /**
+     * @param hailingTo the hailingTo to set
+     */
+    public void setHailingTo(String hailingTo) {
+        this.hailingTo = hailingTo;
+    }
+
+    /**
+     * @return the pushToken
+     */
+    public String getPushToken() {
+        return pushToken;
+    }
+
+    /**
+     * @param pushToken the pushToken to set
+     */
+    public void setPushToken(String pushToken) {
+        this.pushToken = pushToken;
     }
     
     
