@@ -96,7 +96,11 @@ public class Handler extends BinaryWebSocketHandler {
                             dos.writeDouble(u.getLatitude());
                             dos.writeDouble(u.getLongitude());
                             dos.writeFloat(u.getDirection());
-                            dos.writeUTF(u.getPushToken());
+                            if(u.getPushToken() == null) {
+                                dos.writeUTF("");
+                            } else {
+                                dos.writeUTF(u.getPushToken());
+                            }
                         }
                         dos.flush();
                         BinaryMessage bin = new BinaryMessage(bos.toByteArray());
