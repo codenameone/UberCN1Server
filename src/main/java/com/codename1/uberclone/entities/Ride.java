@@ -2,12 +2,10 @@ package com.codename1.uberclone.entities;
 
 import java.math.BigDecimal;
 import java.util.Set;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
@@ -36,6 +34,10 @@ public class Ride {
     private BigDecimal cost;
     
     private String currency;
+    
+    private boolean finished;
+
+    private boolean started;
 
     public Ride() {        
     }
@@ -115,6 +117,34 @@ public class Ride {
      */
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    /**
+     * @return the finished
+     */
+    public boolean isFinished() {
+        return finished;
+    }
+
+    /**
+     * @param finished the finished to set
+     */
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
+    /**
+     * @return the started
+     */
+    public boolean isStarted() {
+        return started;
+    }
+
+    /**
+     * @param started the started to set
+     */
+    public void setStarted(boolean started) {
+        this.started = started;
     }
     
     

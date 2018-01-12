@@ -1,6 +1,5 @@
 package com.codename1.uberclone.api;
 
-import com.codename1.uberclone.dao.RideDAO;
 import com.codename1.uberclone.dao.UserDAO;
 import com.codename1.uberclone.entities.User;
 import com.codename1.uberclone.entities.UserRepository;
@@ -8,7 +7,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * API's related to user access

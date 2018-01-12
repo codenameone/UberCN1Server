@@ -82,4 +82,11 @@ public class UserWebservice {
             return users.addUser(ud);
         }
     }
+
+    @RequestMapping(method = RequestMethod.GET,value = "/setPushToken")
+    public @ResponseBody String updatePushToken(@RequestParam(name="token", required = true) String token, 
+                @RequestParam(name="pushToken", required = true) String pushToken) {
+        users.updatePushToken(token, pushToken);
+        return "OK";
+    }
 }

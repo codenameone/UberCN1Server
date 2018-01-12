@@ -27,9 +27,6 @@ public class Handler extends BinaryWebSocketHandler {
     private LocationService loc;
     
     @Autowired
-    private UserService users;
-
-    @Autowired
     private RideService rides;
     
     
@@ -77,9 +74,9 @@ public class Handler extends BinaryWebSocketHandler {
                             DataOutputStream dos = new DataOutputStream(bos)) {
                         dos.writeShort(MESSAGE_TYPE_DRIVER_FOUND);
                         dos.writeLong(driver.getId());
-                        dos.writeUTF(driver.getCar());
-                        dos.writeUTF(driver.getGivenName());
-                        dos.writeUTF(driver.getSurname());
+                        dos.writeUTF(notNull(driver.getCar()));
+                        dos.writeUTF(notNull(driver.getGivenName()));
+                        dos.writeUTF(notNull(driver.getSurname()));
                         dos.writeFloat(driver.getCurrentRating());
                         dos.flush();
                         BinaryMessage bin = new BinaryMessage(bos.toByteArray());
@@ -96,11 +93,7 @@ public class Handler extends BinaryWebSocketHandler {
                             dos.writeDouble(u.getLatitude());
                             dos.writeDouble(u.getLongitude());
                             dos.writeFloat(u.getDirection());
-                            if(u.getPushToken() == null) {
-                                dos.writeUTF("");
-                            } else {
-                                dos.writeUTF(u.getPushToken());
-                            }
+                            dos.writeUTF(notNull(u.getPushToken(), ""));
                         }
                         dos.flush();
                         BinaryMessage bin = new BinaryMessage(bos.toByteArray());
@@ -110,5 +103,16 @@ public class Handler extends BinaryWebSocketHandler {
                 break;
         }
     }
+
+    private String notNull(String val, String defaultVal) {
+        if(val == null) {
+            return defaultVal;
+        }
+        return val;
+    }
     
+
+    private String notNull(String val) {
+        return notNull(val, "[unknown]");
+    }
 }

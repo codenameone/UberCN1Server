@@ -18,6 +18,9 @@ public class RideDAO implements Serializable {
     public RideDAO(long userId, String name, String from, String destination) {
         this.userId = userId;
         this.name = name;
+        if(this.name == null) {
+            this.name = "[Unnamed User]";
+        }
         this.from = from;
         this.destination = destination;
     }
