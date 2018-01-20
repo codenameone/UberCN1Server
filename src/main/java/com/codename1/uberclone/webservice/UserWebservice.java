@@ -38,8 +38,18 @@ public class UserWebservice {
     }    
 
     @RequestMapping(method=RequestMethod.GET,value = "/exists")
-    public @ResponseBody boolean exists(String phone) {
-        return users.existsByPhone(phone);
+    public @ResponseBody boolean exists(String v) {
+        return users.existsByPhone(v);
+    }
+
+    @RequestMapping(method=RequestMethod.GET,value = "/existsFacebook")
+    public @ResponseBody boolean existsFacebook(String v) {
+        return users.existsByFacebook(v);
+    }
+    
+    @RequestMapping(method=RequestMethod.GET,value = "/existsGoogle")
+    public @ResponseBody boolean existsGoogle(String v) {
+        return users.existsByGoogle(v);
     }
     
     @RequestMapping(method=RequestMethod.GET,value = "/login")

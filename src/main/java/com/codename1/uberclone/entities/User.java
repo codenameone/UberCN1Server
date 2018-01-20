@@ -39,6 +39,7 @@ public class User {
     private String pushToken;
 
     private Long assignedUser;
+    private Long currentRide;
     
     private float currentRating;
 
@@ -375,6 +376,20 @@ public class User {
      */
     public void setPushToken(String pushToken) {
         this.pushToken = pushToken;
+    }
+
+    /**
+     * @return the currentRide
+     */
+    public Long getCurrentRide() {
+        return currentRide;
+    }
+
+    /**
+     * @param currentRide the currentRide to set
+     */
+    public void setCurrentRide(Long currentRide) {
+        this.currentRide = currentRide;
     }
     
     

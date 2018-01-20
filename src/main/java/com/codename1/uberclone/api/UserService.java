@@ -86,6 +86,16 @@ public class UserService {
         return !us.isEmpty();
     }
     
+    public boolean existsByFacebook(String fb) {
+        List<User> us = users.findByFacebookId(fb);
+        return !us.isEmpty();
+    }
+    
+    public boolean existsByGoogle(String google) {
+        List<User> us = users.findByGoogleId(google);
+        return !us.isEmpty();
+    }
+
     public void updatePushToken(String token, String pushToken) {
         User u = users.findByAuthToken(token).get(0);
         u.setPushToken(pushToken);

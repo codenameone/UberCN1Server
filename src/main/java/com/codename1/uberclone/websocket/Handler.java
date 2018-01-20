@@ -78,6 +78,7 @@ public class Handler extends BinaryWebSocketHandler {
                         dos.writeUTF(notNull(driver.getGivenName()));
                         dos.writeUTF(notNull(driver.getSurname()));
                         dos.writeFloat(driver.getCurrentRating());
+                        dos.writeLong(driver.getCurrentRide());
                         dos.flush();
                         BinaryMessage bin = new BinaryMessage(bos.toByteArray());
                         session.sendMessage(bin);

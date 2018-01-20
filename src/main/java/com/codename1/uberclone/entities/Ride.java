@@ -38,6 +38,8 @@ public class Ride {
     private boolean finished;
 
     private boolean started;
+    
+    private String nonce;
 
     public Ride() {        
     }
@@ -145,6 +147,20 @@ public class Ride {
      */
     public void setStarted(boolean started) {
         this.started = started;
+    }
+
+    /**
+     * @return the nonce
+     */
+    public String getNonce() {
+        return nonce;
+    }
+
+    /**
+     * @param nonce the nonce to set
+     */
+    public void setNonce(String nonce) {
+        this.nonce = nonce;
     }
     
     
